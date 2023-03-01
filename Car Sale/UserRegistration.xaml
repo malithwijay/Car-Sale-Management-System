@@ -1,0 +1,250 @@
+﻿<Window x:Class="Car_Sale.UserRegistration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="User Registration" Height="600" Width="1200"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="0,35,0,0">
+
+
+            <Label Content="User Name" Margin="40,30,0,0" FontSize="15" ></Label>
+            <Label Content="Password" Margin="40,30,0,0" FontSize="15" ></Label>
+            <Label Content="Retype Password" Margin="40,25,0,0" FontSize="15" ></Label>
+            <Label Content="Type" FontSize="15"  Margin="40,25,0,0" ></Label>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="1"   Margin="0,40,0,0">
+
+            <TextBlock x:Name="txt_image_loc" Visibility="Hidden"/>
+
+            <TextBox x:Name="txt_User_name" Width="250" Height="30" Margin="0,0,0,0"></TextBox>
+            <TextBlock  x:Name="txt_error_user_name" Foreground="Red" Margin="30,0,0,0" TextWrapping="Wrap" Visibility="Visible" ></TextBlock>
+            <TextBox x:Name="txt_Password" Width="250" Height="30" Margin="0,10,0,0"></TextBox>
+            <TextBlock  x:Name="txt_error_password" Foreground="Red" TextWrapping="Wrap"  Margin="30,0,0,0" Visibility="Visible"  ></TextBlock>
+            <TextBox x:Name="txt_Retype_Password" Width="250" Height="30" Margin="0,10,0,0"></TextBox>
+            <TextBlock  x:Name="txt_error_retype_password" Foreground="Red"  TextWrapping="Wrap"  Margin="30,0,0,0" Visibility="Visible" ></TextBlock>
+            <ComboBox x:Name="cmb_Type" Width="250" Height="30"  SelectionChanged="cmb_Type_SelectionChanged" Margin="0,8,0,0">
+                <ComboBoxItem
+                    Content="Admin"/>
+                <ComboBoxItem
+                    Content="Manager"/>
+                <ComboBoxItem
+                    Content="User"/>
+            </ComboBox>
+            <TextBlock  x:Name="txt_error_type" Foreground="Red" TextWrapping="Wrap" Visibility="Visible"  ></TextBlock>
+
+
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" Margin="50,60,0,0" x:Name="admin_des" Visibility="Hidden">
+            <TextBlock Text="Admin User Description" FontSize="15" FontWeight="Medium"  Foreground="Red"/>
+            <TextBlock Text="*This Type user have all preivages."/>
+            <TextBlock Text="*Delete Data Insert Data Update Data."/>
+            <TextBlock Text="*No Permission needed for any operation."/>
+            <TextBlock Text="*Can add users to the system."/>
+            <TextBlock Text="*Suggestion : One Addmin is enough for system" TextWrapping="Wrap"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" Margin="50,60,0,0" x:Name="manager_des" Visibility="Hidden">
+            <TextBlock Text="Manager User Description" FontSize="15" FontWeight="Medium"  Foreground="Red"/>
+            <TextBlock TextWrapping="Wrap">
+                *This User is also a admin type user
+            </TextBlock>
+            <TextBlock Text="*But cannot add Users to the System"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" Margin="50,60,0,0" x:Name="user_des" Visibility="Hidden">
+            <TextBlock Text="Ordinary User Description" FontSize="15" FontWeight="Medium"  Foreground="Red"/>
+            <TextBlock Text="*This users have less privilages"/>
+            <TextBlock Text="*This users can do only view and Sale"/>
+            <TextBlock Text="*To do such operations this users need to contact admin or manager user" TextWrapping="Wrap"/>
+        </StackPanel>
+
+
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Border BorderBrush="Black" BorderThickness="1">
+            <Image x:Name="img_user" Width ="200" Height="113" Margin="0,0,0,0" ></Image>
+            </Border>
+            
+            <StackPanel Orientation ="Horizontal" Margin="10,10,0,0">
+                <Button x:Name="Btn_Browse"  Content="Save Image" Foreground="White"  Click="Btn_Browse_Click" Margin="10">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="LightSeaGreen"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="70" Height="25" CornerRadius="12" Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button x:Name="Camera"  Content="Camera" Foreground="White" Margin="10" Click="Camera_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="LightSeaGreen"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightBlue"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="70" Height="25" CornerRadius="12" Background="{TemplateBinding Background}" >
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="4" Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" Visibility="Hidden" x:Name="Camera_panel">
+            <TextBlock Text="Camera" FontSize="20" FontFamily="Arial" FontWeight="Bold" Margin="20,100,0,0"/>
+            <TextBlock Text="Settings" FontSize="20" FontFamily="Arial" FontWeight="Bold" Margin="20,0,0,0"/>
+            <TextBlock Text="Select Capture Device" Margin="20,10,0,0"/>
+            <ComboBox x:Name="select_capture_device_cmb" Width="150" DisplayMemberPath="Name"
+                  ItemsSource="{Binding VideoDevices}"
+                  SelectedItem="{Binding ThisDevice}"/>
+
+            <Button Content="Open" x:Name="cam_open_btn" Foreground="White" Margin="15" Click="cam_open_btn_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Green"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="25" CornerRadius="12" Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Content="Capture" x:Name="cam_capture_btn" Foreground="White"  Click="cam_capture_btn_Click" >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Red"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="120" Height="25" CornerRadius="12" Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+
+
+
+
+
+
+
+        <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right"  Margin="0,0,30,40" >
+
+            <Button x:Name="Btn_Save" Content="Save" Foreground="White"  Click="Btn_Save_Click" Margin="10">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="LightSeaGreen"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="25" CornerRadius="12" Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button x:Name="Btn_Clear" Content="Clear" Foreground="White"  Click="Btn_Clear_Click" Margin="10">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="LightSeaGreen"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="25" CornerRadius="12" Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </StackPanel>
+
+
+
+    </Grid>
+
+
+
+
+
+
+</Window>

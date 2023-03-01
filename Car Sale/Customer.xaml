@@ -1,0 +1,139 @@
+﻿<UserControl x:Class="Car_Sale.Customer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Car_Sale"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1500" Loaded="UserControl_Loaded">
+
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition />
+
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="80"/>
+
+            <RowDefinition/>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+            <Image Source="Logo\carLogo.png" Width="90" Height="80" HorizontalAlignment="Left" Margin="80,0,0,0"/>
+            <TextBlock Text="Our Customers..." FontSize="25" FontFamily="Gill Sans" FontWeight="Bold" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Visibility="Hidden">
+            <TextBlock x:Name="ed_cus_id"/>
+            <TextBlock x:Name="ed_cus_fname"/>
+            <TextBlock x:Name="ed_cus_lname"/>
+            <TextBlock x:Name="ed_cus_gender"/>
+            <TextBlock x:Name="ed_cus_telephone"/>
+            <TextBlock x:Name="ed_cus_email"/>
+            <TextBlock x:Name="ed_cus_addressno"/>
+            <TextBlock x:Name="ed_cus_addline1"/>
+            <TextBlock x:Name="ed_cus_addline2"/>
+            <TextBlock x:Name="ed_cus_city"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1"   Margin="5,20,0,0" HorizontalAlignment="Left">
+
+            <DataGrid Width="1200" Height="375" x:Name="Customer_view" AutoGenerateColumns="False" 
+                      ItemsSource="{Binding Path=LoadDataBinding}" CanUserResizeColumns="False" IsSynchronizedWithCurrentItem="True" 
+                      SelectionUnit="FullRow" Background="AliceBlue" BorderBrush="Black" SelectedCellsChanged="Customer_view_SelectedCellsChanged"
+                      CellEditEnding="Customer_view_CellEditEnding">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=CustomerNIC}" Header="Customer NIC" Width="120" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Path=FirstName}" Header="First Name" Width="150" IsReadOnly="False"/>
+                    <DataGridTextColumn Binding="{Binding Path=LastName}" Header="Last Name" Width="150" IsReadOnly="False"/>
+                    <DataGridTextColumn Binding="{Binding Path=Gender}" Header="Gender" Width="150" IsReadOnly="False"/>
+                    <DataGridTextColumn Binding="{Binding Path=Telephone}" Header="Telephone" Width="150" IsReadOnly="False"/>
+                    <DataGridTextColumn Binding="{Binding Path=Email}" Header="Email" Width="150" IsReadOnly="False"/>
+                    <DataGridTextColumn Binding="{Binding Path=AddressNO}" Header="Address No" Width="150" IsReadOnly="False"/>
+                    <DataGridTextColumn Binding="{Binding Path=FirstAddressLine}" Header="Address Line 1" Width="150" IsReadOnly="False"/>
+                    <DataGridTextColumn Binding="{Binding Path=SecondAddressLine}" Header="Address Line 2" Width="150" IsReadOnly="False"/>
+                    <DataGridTextColumn Binding="{Binding Path=City}" Header="City" Width="150" IsReadOnly="False"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Update" Height="25" Width="80" x:Name="update_btn" Click="update_btn_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                   
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+
+
+
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="10,8,0,0" x:Name="instruction_txt" Visibility="Hidden" >
+            <TextBlock Text="Instructions to Update Data," FontWeight="Bold" Foreground="Red"/>
+            <TextBlock Text="*Select Cell/Cells you wants to edit and change values of them."/>
+            <TextBlock Text="*Then Press Enter to chage cell value."/>
+            <TextBlock Text="*Select the row again (the row that you want to edit)"/>
+            <TextBlock Text="*Check text boxs to double check the values are changed"/>
+            <TextBlock Text="*Press Update to Update"/>
+        </StackPanel>
+
+        <StackPanel 
+            Grid.Row="3"
+            Grid.Column="2"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Orientation="Vertical"
+            Margin="-50,0,0,10">
+           
+            <Button x:Name="btn_Add" Content="Add" Foreground="White"  Click="Add_Click"  Margin="10">
+               
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="LightSeaGreen"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="100" Height="25" CornerRadius="12" Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </StackPanel>
+        <StackPanel
+            
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="10,8,0,0"
+            HorizontalAlignment="Left"
+            Orientation="Vertical"
+            Visibility="Visible">
+            <TextBlock
+                FontWeight="Bold"
+                Foreground="Red"
+                Text="Instructions to Update Data," />
+            <TextBlock Text="*Select Cell/Cells you wants to edit and change values of them." />
+            <TextBlock Text="*Then Press Enter to change cell value." />
+            <TextBlock Text="*Select the row again (the row that you want to edit)" />
+            <TextBlock Text="*Check text boxs to double check the values are changed" />
+            <TextBlock Text="*Press Update to Update" />
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

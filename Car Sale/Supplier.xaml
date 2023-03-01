@@ -1,0 +1,308 @@
+﻿<UserControl
+    x:Class="Car_Sale.Supplier"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Car_Sale"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="700"
+    d:DesignWidth="1500"
+    Loaded="UserControl_Loaded"
+    mc:Ignorable="d">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="80" />
+
+            <RowDefinition />
+            <RowDefinition Height="120" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Image
+                Width="90"
+                Height="80"
+                Margin="80,0,0,0"
+                HorizontalAlignment="Left"
+                Source="Logo\carLogo.png" />
+            <TextBlock
+                VerticalAlignment="Center"
+                FontFamily="Gill Sans"
+                FontSize="25"
+                FontWeight="Bold"
+                Text="Our Suppliers..." />
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="25,20,0,0"
+            HorizontalAlignment="Left">
+            <DataGrid
+                x:Name="Supplier_view"
+                Width="840"
+                Height="375"
+                AutoGenerateColumns="False"
+                Background="AliceBlue"
+                BorderBrush="Black"
+                CanUserResizeColumns="False"
+                CellEditEnding="Supplier_view_CellEditEnding"
+                IsSynchronizedWithCurrentItem="True"
+                ItemsSource="{Binding Path=LoadDataBinding}"
+                SelectedCellsChanged="Supplier_view_SelectedCellsChanged"
+                SelectionUnit="FullRow">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Width="120"
+                        Binding="{Binding Path=NIC}"
+                        Header="Supplier ID"
+                        IsReadOnly="True" />
+                    <DataGridTextColumn
+                        Width="150"
+                        Binding="{Binding Path=FirstName}"
+                        Header="First Name"
+                        IsReadOnly="False" />
+                    <DataGridTextColumn
+                        Width="150"
+                        Binding="{Binding Path=LastName}"
+                        Header="Last Name"
+                        IsReadOnly="False" />
+                    <DataGridTextColumn
+                        Width="150"
+                        Binding="{Binding Path=Telephone}"
+                        Header="Telephone No"
+                        IsReadOnly="False" />
+                    <DataGridTextColumn
+                        Width="200"
+                        Binding="{Binding Path=Email}"
+                        Header="Email ID"
+                        IsReadOnly="False" />
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button
+                                    x:Name="update_btn"
+                                    Width="80"
+                                    Height="25"
+                                    Click="update_btn_Click"
+                                    Content="Update" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button
+                                    x:Name="delete_btn"
+                                    Width="80"
+                                    Height="25"
+                                    Background="Red"
+                                    Click="delete_btn_Click"
+                                    Content="Delete" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="2"
+            Grid.Column="2"
+            HorizontalAlignment="Right"
+            Orientation="Vertical">
+            <TextBlock
+                Margin="10,10,10,10"
+                FontSize="15"
+                Text="Supplier ID" />
+            <TextBlock
+                Margin="10,50,10,10"
+                FontSize="15"
+                Text="First Name" />
+            <TextBlock
+                Margin="10,50,10,10"
+                FontSize="15"
+                Text="Last Name" />
+            <TextBlock
+                Margin="10,55,10,10"
+                FontSize="15"
+                Text="Telephone" />
+            <TextBlock
+                Margin="10,55,10,10"
+                FontSize="15"
+                Text="Email" />
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="2"
+            Grid.Column="3"
+            HorizontalAlignment="Left"
+            Orientation="Vertical">
+            <TextBox
+                x:Name="txt_Supplier_ID"
+                Width="200"
+                Margin="10,10,10,10" />
+            <TextBlock
+                x:Name="txt_error_Supplier_NIC"
+                Margin="10,10,10,10"
+                Foreground="Red"
+                TextWrapping="Wrap"
+                Visibility="Visible"/>
+            <TextBox
+                x:Name="txt_First_Name"
+                Width="200"
+                Margin="10,10,10,10" />
+            <TextBlock
+                x:Name="txt_error_First_Name"
+                Margin="10,10,10,10"
+                Foreground="Red"
+                TextWrapping="Wrap"
+                Visibility="Visible"/>
+            <TextBox
+                x:Name="txt_Last_Name"
+                Width="200"
+                Margin="10,10,10,10" />
+            <TextBlock
+                x:Name="txt_error_Last_Name"
+                Margin="10,10,10,10"
+                Foreground="Red"
+                TextWrapping="Wrap"
+                Visibility="Visible"/>
+            <TextBox
+                x:Name="txt_Telephone"
+                Width="200"
+                Margin="10,10,10,10" />
+            <TextBlock
+                x:Name="txt_error_Telephone"
+                Margin="10,10,10,10"
+                Foreground="Red"
+                TextWrapping="Wrap"
+                Visibility="Visible"/>
+            <TextBox
+                x:Name="txt_Email"
+                Width="200"
+                Margin="10,10,10,10" />
+            <TextBlock
+                x:Name="txt_error_Email"
+                Margin="10,10,10,10"
+                Foreground="Red"
+                TextWrapping="Wrap"
+                Visibility="Visible"/>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="2"
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal">
+            <TextBlock
+                x:Name="mode_txt"
+                FontSize="15"
+                Foreground="Red"
+                Text="" />
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="3"
+            Grid.Column="3"
+            Margin="0,0,25,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                x:Name="Save"
+                Margin="10"
+                Click="Save_Click"
+                Content="Save"
+                Foreground="White">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="LightSeaGreen" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightBlue" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Width="100"
+                            Height="25"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="12">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button
+                x:Name="Btn_Clear"
+                Margin="10"
+                Click="Btn_Clear_Click"
+                Content="Clear"
+                Foreground="White">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="LightSeaGreen" />
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightBlue" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Width="100"
+                            Height="25"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="12">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+
+        <StackPanel
+            x:Name="instruction_txt"
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="10,8,0,0"
+            HorizontalAlignment="Left"
+            Orientation="Vertical"
+            Visibility="Hidden">
+            <TextBlock
+                FontWeight="Bold"
+                Foreground="Red"
+                Text="Instructions to Update Data," />
+            <TextBlock Text="*Select Cell/Cells you wants to edit and change values of them." />
+            <TextBlock Text="*Then Press Enter to change cell value." />
+            <TextBlock Text="*Select the row again (the row that you want to edit)" />
+            <TextBlock Text="*Check text boxs to double check the values are changed" />
+            <TextBlock Text="*Press Update to Update" />
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

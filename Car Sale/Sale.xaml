@@ -1,0 +1,736 @@
+﻿<UserControl
+    x:Class="Car_Sale.Sale"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Car_Sale"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="1300"
+    d:DesignWidth="1200"
+    Loaded="UserControl_Loaded"
+    mc:Ignorable="d">
+
+    <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Hidden">
+
+        <Grid Background="White">
+
+
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+
+            </Grid.ColumnDefinitions>
+
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="20" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+
+            </Grid.RowDefinitions>
+
+
+
+
+            <StackPanel
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+
+                <Image
+                    Width="90"
+                    Height="80"
+                    Margin="80,0,0,0"
+                    HorizontalAlignment="Left"
+                    Source="Logo\carLogo.png" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontFamily="Gill Sans"
+                    FontSize="25"
+                    FontWeight="Bold"
+                    Text="Sale..." />
+            </StackPanel>
+
+
+
+
+            <StackPanel
+                Grid.Row="2"
+                Grid.RowSpan="4"
+                Grid.Column="1"
+                Margin="0,0,0,0"
+                Orientation="Vertical">
+
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Label
+                        Margin="10,10,20,0"
+                        Content="Vehicle ID"
+                        FontSize="15" />
+                    <TextBox
+                        x:Name="txt_vehicle_id"
+                        Width="200"
+                        Height="25"
+                        Margin="10,0,0,0" />
+                    <Label
+                        Margin="20,0,20,0"
+                        Content="Or Scan"
+                        FontSize="15" />
+                    <Border
+                        Margin="10,0,10,0"
+                        BorderBrush="Black"
+                        BorderThickness="1">
+                        <Image
+                            x:Name="qr_car"
+                            Width="50"
+                            Height="50" />
+                    </Border>
+
+
+                    <Button
+                        x:Name="Btn_veh_Search"
+                        Margin="10,0,0,0"
+                        Click="Btn_veh_Search_Click"
+                        Content="Search"
+                        Foreground="White">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="LightSeaGreen" />
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightBlue" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Width="70"
+                                    Height="25"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="12">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+
+
+                <StackPanel Orientation="Horizontal">
+                    <Border
+                        Margin="85,10,0,0"
+                        BorderBrush="Black"
+                        BorderThickness="1">
+                        <Image
+                            x:Name="carimageviewer"
+                            Width="250"
+                            Height="150"
+                            Margin="0,0,0,0"
+                            Stretch="Uniform"
+                            StretchDirection="DownOnly" />
+                    </Border>
+                </StackPanel>
+
+
+
+
+                <StackPanel
+                    Height="150"
+                    Margin="0,25,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+
+                    <DataGrid
+                        x:Name="Car_view"
+                        AutoGenerateColumns="False"
+                        Background="AliceBlue"
+                        BorderBrush="Black"
+                        CanUserResizeColumns="False"
+                        CellEditEnding="Car_view_CellEditEnding"
+                        IsSynchronizedWithCurrentItem="True"
+                        ItemsSource="{Binding Path=LoadDataBinding}"
+                        SelectedCellsChanged="Car_view_SelectedCellsChanged"
+                        SelectionUnit="FullRow">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="150"
+                                Binding="{Binding Path=ModelName}"
+                                Header="Model"
+                                IsReadOnly="False" />
+                            <DataGridTextColumn
+                                Width="150"
+                                Binding="{Binding Path=Condition}"
+                                Header="Condition"
+                                IsReadOnly="False" />
+                            <DataGridTextColumn
+                                Width="150"
+                                Binding="{Binding Path=YearOfMade}"
+                                Header="Y.O.M"
+                                IsReadOnly="False" />
+                            <DataGridTextColumn
+                                Width="150"
+                                Binding="{Binding Path=Price}"
+                                Header="Price"
+                                IsReadOnly="False" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+
+
+                <StackPanel Margin="10,0,0,0" Orientation="Horizontal">
+
+                    <Label
+                        Margin="0,0,0,0"
+                        Content="Customer ID"
+                        FontSize="15" />
+                    <TextBox
+                        x:Name="txt_Cus_id"
+                        Width="200"
+                        Height="25"
+                        Margin="20,0,0,0" />
+                    <Button
+                        x:Name="Btn_cus_Search"
+                        Margin="23,0,0,0"
+                        Click="Btn_cus_Search_Click"
+                        Content="Search"
+                        Foreground="White">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="LightSeaGreen" />
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightBlue" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Width="70"
+                                    Height="25"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="12">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </StackPanel>
+
+
+
+
+
+                <StackPanel
+                    Height="150"
+                    Margin="0,25,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+                    <DataGrid
+                        x:Name="Customer_view"
+                        AutoGenerateColumns="False"
+                        Background="AliceBlue"
+                        BorderBrush="Black"
+                        CanUserResizeColumns="False"
+                        CellEditEnding="Customer_view_CellEditEnding"
+                        IsSynchronizedWithCurrentItem="True"
+                        ItemsSource="{Binding Path=LoadDataBinding}"
+                        SelectedCellsChanged="Customer_view_SelectedCellsChanged"
+                        SelectionUnit="FullRow">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="120"
+                                Binding="{Binding Path=FirstName}"
+                                Header="Name"
+                                IsReadOnly="True" />
+                            <DataGridTextColumn
+                                Width="150"
+                                Binding="{Binding Path=Telephone}"
+                                Header="Telephone"
+                                IsReadOnly="False" />
+                            <DataGridTextColumn
+                                Width="150"
+                                Binding="{Binding Path=Email}"
+                                Header="Email"
+                                IsReadOnly="False" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+
+
+
+                <StackPanel Margin="0,0,0,20" Orientation="Horizontal">
+                    <TextBlock x:Name="txt_type"
+                        Margin="175,0,0,10"
+                        FontSize="15"
+                        Foreground="Red"
+                        TextWrapping="Wrap"
+                        Visibility="Hidden" IsEnabled="False" />
+
+                    <Button
+                        x:Name="Btn_Addcus_Search"
+                        Margin="30,-10,0,0"
+                        Click="Btn_Addcus_Search_Click"
+                        Content="Add"
+                        Foreground="White">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="LightSeaGreen" />
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightBlue" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Width="70"
+                                    Height="25"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="12">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+
+
+
+                <StackPanel Margin="10,0,0,0" Orientation="Horizontal">
+
+                    <Label
+                        Margin="0,0,0,0"
+                        Content="Salesman ID"
+                        FontSize="15" />
+                    <TextBox
+                        x:Name="txt_Salesman_id"
+                        Width="200"
+                        Height="25"
+                        Margin="20,0,0,0" />
+                    <Button
+                        x:Name="Btn_salesman_Search"
+                        Margin="25,0,0,0"
+                        Click="Btn_salesman_Search_Click"
+                        Content="Search"
+                        Foreground="White">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="LightSeaGreen" />
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightBlue" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Width="70"
+                                    Height="25"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="12">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Border
+                        Margin="120,40,0,0"
+                        BorderBrush="Black"
+                        BorderThickness="1">
+                        <Image
+                            x:Name="img_salesman"
+                            Width="150"
+                            Height="150"
+                            Margin="0,0,0,0" />
+                    </Border>
+
+                    <StackPanel Orientation="Vertical">
+                        <Label
+                            Margin="50,40,0,0"
+                            Content="Name"
+                            FontSize="15" />
+                        <TextBox
+                            x:Name="txt_Salesman_name"
+                            Width="200"
+                            Height="25"
+                            Margin="50,10,0,0" />
+
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <Label
+                        Margin="50,40,0,0"
+                        Content="Enter Commision Amount Given To Sales Person"
+                        FontSize="15" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label
+                            Margin="280,20,0,0"
+                            Content="Rs"
+                            FontSize="15" />
+                        <TextBox
+                            x:Name="txt_Salesman_Commission_name"
+                            Width="200"
+                            Height="25"
+                            Margin="20,10,0,0" />
+                    </StackPanel>
+
+                </StackPanel>
+
+            </StackPanel>
+
+
+
+            <StackPanel
+                x:Name="stack_printBill"
+                Grid.Row="2"
+                Grid.RowSpan="4"
+                Grid.Column="2"
+                Orientation="Vertical">
+
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Margin="30,10,0,0" Orientation="Horizontal">
+                        <Label
+                            Content=" Customer Bill"
+                            FontSize="25"
+                            Foreground="Gray" />
+                        <Label
+                            Margin="80,10,0,0"
+                            Content="Invoice Number :"
+                            FontSize="13" />
+                        <TextBox
+                            x:Name="txt_bill_id"
+                            Width="150"
+                            Height="25" IsEnabled="False" />
+                    </StackPanel>
+
+
+                    <StackPanel Margin="80,10,0,0" Orientation="Horizontal">
+                        <Label
+                            Margin="0,0,20,0"
+                            Content=" Title - "
+                            FontSize="15" />
+                        <RadioButton
+                            x:Name="rdb_mr"
+                            Margin="90,0,20,0"
+                            Checked="rdb_mr_Checked"
+                            Content="Mr." />
+                        <RadioButton
+                            x:Name="rdb_mrs"
+                            Margin="0,0,20,0"
+                            Checked="rdb_mrs_Checked"
+                            Content="Mrs." />
+                        <RadioButton
+                            x:Name="rdb_miss"
+                            Margin="0,0,20,0"
+                            Checked="rdb_miss_Checked"
+                            Content="Miss." />
+                    </StackPanel>
+
+
+                    <StackPanel Margin="80,10,0,0" Orientation="Horizontal">
+                        <Label
+                            Margin="0,0,20,0"
+                            Content=" Name - "
+                            FontSize="15" />
+                        <TextBox
+                            x:Name="txt_cus_name"
+                            Width="150"
+                            Height="25"
+                            Margin="100,0,0,0" IsEnabled="False" />
+                    </StackPanel>
+
+
+                    <StackPanel Margin="80,10,0,0" Orientation="Horizontal">
+                        <Label
+                            Margin="0,0,20,0"
+                            Content="Customer ID - "
+                            FontSize="15" />
+                        <TextBox
+                            x:Name="txt_cus_id"
+                            Width="150"
+                            Height="25"
+                            Margin="60,0,0,0" IsEnabled="False" />
+                    </StackPanel>
+
+
+
+                    <StackPanel Margin="80,10,0,0" Orientation="Horizontal">
+                        <Label
+                            Margin="0,0,20,0"
+                            Content=" Date - "
+                            FontSize="15" />
+                        <TextBox
+                            x:Name="txt_date"
+                            Width="150"
+                            Height="25"
+                            Margin="108,0,0,0" IsEnabled="False" />
+                    </StackPanel>
+
+
+                    <StackPanel Margin="60,30,0,0" Orientation="Vertical">
+                        <Label
+                            Margin="0,0,0,0"
+                            Content="Vehicle Details - "
+                            FontSize="15" />
+                        <TextBox
+                            x:Name="txt_vehicle_details"
+                            Width="450"
+                            Height="250"
+                            Margin="0,20,0,0"
+                            HorizontalAlignment="Left"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+
+
+                    <StackPanel Margin="80,10,0,0" Orientation="Horizontal">
+                        <Label
+                            Margin="0,10,20,0"
+                            Content=" Price - "
+                            FontSize="15" />
+                        <TextBox
+                            x:Name="txt_price"
+                            Width="150"
+                            Height="25"
+                            Margin="108,0,0,0"
+                            IsEnabled="False" />
+                    </StackPanel>
+
+
+                    <StackPanel Margin="80,10,0,0" Orientation="Horizontal">
+                        <Label
+                            Margin="0,10,20,0"
+                            Content=" Discount - "
+                            FontSize="15" />
+                        <TextBox
+                            x:Name="txt_discount"
+                            Width="150"
+                            Height="25"
+                            Margin="81,0,0,0" />
+                    </StackPanel>
+
+
+                    <StackPanel Margin="80,10,0,0" Orientation="Horizontal">
+                        <Label
+                            Margin="0,10,20,0"
+                            Content=" Payment Type - "
+                            FontSize="15" />
+                    </StackPanel>
+
+                </StackPanel>
+
+
+
+                <StackPanel
+                    x:Name="stack_finance"
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Width="450"
+                    Height="170"
+                    Margin="0,10,40,70"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical"
+                    Visibility="Hidden">
+
+
+                    <StackPanel Margin="40,10,0,0" Orientation="Horizontal">
+                        <Label
+                            Margin="0,10,0,0"
+                            Content=" Finance Ammount - "
+                            FontSize="15" />
+                        <TextBox
+                            x:Name="txt_finance_amount"
+                            Width="150"
+                            Height="25"
+                            Margin="40,0,0,0" />
+                    </StackPanel>
+
+
+                    <StackPanel Margin="40,10,0,0" Orientation="Horizontal">
+                        <Label
+                            Margin="0,10,0,0"
+                            Content=" Customer Ammount - "
+                            FontSize="15" />
+                        <TextBox
+                            x:Name="txt_customer_amount"
+                            Width="150"
+                            Height="25"
+                            Margin="26,0,0,0" />
+                    </StackPanel>
+
+                    <StackPanel Margin="40,10,0,0" Orientation="Horizontal">
+                        <Label
+                            Margin="0,10,0,0"
+                            Content=" Check ID - "
+                            FontSize="15" />
+                        <TextBox
+                            x:Name="txt_check_id"
+                            Width="150"
+                            Height="25"
+                            Margin="102,0,0,0" />
+                    </StackPanel>
+
+                </StackPanel>
+
+
+                <StackPanel
+                    x:Name="stack_cash"
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Width="450"
+                    Height="170"
+                    Margin="0,-270,40,0"
+                    VerticalAlignment="Top"
+                    Orientation="Vertical"
+                    Visibility="Hidden">
+
+                    <StackPanel Margin="40,40,0,0" Orientation="Horizontal">
+                        <Label
+                            Margin="0,10,0,0"
+                            Content=" Cash Ammount - "
+                            FontSize="15" />
+                        <TextBox
+                            x:Name="txt_cash_amount"
+                            Width="150"
+                            Height="25"
+                            Margin="57,0,0,0" />
+                    </StackPanel>
+
+                </StackPanel>
+
+
+                <StackPanel Margin="80,-80,0,0" Orientation="Horizontal">
+                    <Label
+                        Margin="0,10,0,0"
+                        Content=" Total - "
+                        FontSize="15" />
+                    <TextBox
+                        x:Name="txt_total_"
+                        Width="150"
+                        Height="25"
+                        Margin="130,0,0,35"
+                        IsEnabled="False" />
+                </StackPanel>
+
+                <StackPanel Margin="80,-80,0,0" Orientation="Horizontal">
+
+                    <TextBox
+                        x:Name="txt_Desceription_"
+                        Width="450"
+                        Height="120"
+                        Margin="-20,50,0,0"
+                        BorderBrush="Black"
+                        BorderThickness="1" />
+                </StackPanel>
+
+                <StackPanel
+                    Margin="0,30,50,60"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+
+                    <Button
+                        x:Name="Btn_Save"
+                        Margin="10"
+                        Click="Btn_Save_Click"
+                        Content="Save"
+                        Foreground="White">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="LightSeaGreen" />
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightBlue" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Width="100"
+                                    Height="25"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="12">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                    <Button
+                        x:Name="Btn_Clear"
+                        Margin="10"
+                        Click="Btn_Clear_Click"
+                        Content="Clear"
+                        Foreground="White">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="LightSeaGreen" />
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="LightBlue" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Width="100"
+                                    Height="25"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="12">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+                </StackPanel>
+
+            </StackPanel>
+            <ComboBox Grid.Column="2" HorizontalAlignment="Left" Margin="269.6,121,0,0" Grid.Row="3" VerticalAlignment="Top" Width="120" x:Name="pay_name" SelectionChanged="pay_name_SelectionChanged">
+                <ComboBoxItem Content="Cash Payment" x:Name="txt_cash" Selected="txt_cash_Selected"/>
+                <ComboBoxItem Content="Finance Payment" x:Name="txt_finance" Selected="txt_finance_Selected"/>
+            </ComboBox>
+
+
+
+
+
+        </Grid>
+    </ScrollViewer>
+
+</UserControl>

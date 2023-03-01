@@ -1,0 +1,44 @@
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\bin\Debug\Test UI 1.exe.config
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\bin\Debug\Test UI 1.exe
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\bin\Debug\Test UI 1.pdb
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\Test UI 1.csprojAssemblyReference.cache
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\MainWindow.g.cs
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\App.g.cs
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\Test UI 1_MarkupCompile.cache
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\Test UI 1_MarkupCompile.lref
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\MainWindow.baml
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\Test UI 1.g.resources
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\Test_UI_1.Properties.Resources.resources
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\Test UI 1.csproj.GenerateResource.cache
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\Test UI 1.csproj.CoreCompileInputs.cache
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\Test UI 1.exe
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\Test UI 1.pdb
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\bin\Debug\MaterialDesignColors.dll
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\App.baml
+C:\Users\malith\Documents\Visual Studio 2019\Developed Apps\Test UI 1\Test UI 1\obj\Debug\Test UI 1.csproj.CopyComplete
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\bin\Debug\Test UI 1.exe.config
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\bin\Debug\Test UI 1.exe
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\bin\Debug\Test UI 1.pdb
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\bin\Debug\MaterialDesignColors.dll
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\App.g.cs
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Test UI 1_MarkupCompile.cache
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Test UI 1_MarkupCompile.lref
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\App.baml
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Test UI 1.g.resources
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Test_UI_1.Properties.Resources.resources
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Test UI 1.csproj.GenerateResource.cache
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Test UI 1.csproj.CoreCompileInputs.cache
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Test UI 1.csproj.CopyComplete
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Test UI 1.exe
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Test UI 1.pdb
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Login.g.cs
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Login.baml
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Test UI 1.csprojAssemblyReference.cache
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Home.g.cs
+C:\Users\malith\Downloads\Project 1.0\Test UI\Test UI 1\Test UI 1\obj\Debug\Home.baml
